@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -S $CFILE > ${CFILE}.s
+gcc -masm=intel -S $CFILE > ${CFILE}.s

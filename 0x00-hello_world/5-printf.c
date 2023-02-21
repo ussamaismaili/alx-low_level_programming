@@ -1,6 +1,12 @@
 #include<stdio.h>
 
-/*This code prints some text*/
+/**
+ * main - Entry point
+ *
+ * Description: A C program that prints with printf function.
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 	printf("%s", "with proper grammar, but the outcome is a piece of art,\n");

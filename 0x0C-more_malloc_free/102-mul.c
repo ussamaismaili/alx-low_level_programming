@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int find_len(char *str);
-char *create_xarray(int size);
-char *iterate_zeroes(char *str);
+int calc_len(char *str);
+char *create_xarr(int size);
+char *it_zeroes(char *str);
 void get_prod(char *prod, char *mult, int digit, int zeroes);
 void add_nums(char *final_prod, char *next_prod, int next_len);
 
 /**
- * find_len - Finds the length of a string.
+ * calc_len - Finds the length of a string.
  * @str: The string to be measured.
  *
  * Return: The length of the string.
  */
-int find_len(char *str)
+int calc_len(char *str)
 {
 	int len = 0;
 
@@ -25,7 +25,7 @@ int find_len(char *str)
 }
 
 /**
- * create_xarray - Creates an array of chars and initializes it with
+ * create_xarr - Creates an array of chars and initializes it with
  *                 the character 'x'. Adds a terminating null byte.
  * @size: The size of the array to be initialized.
  *
@@ -33,7 +33,7 @@ int find_len(char *str)
  *              function exits with a status of 98.
  * Return: A pointer to the array.
  */
-char *create_xarray(int size)
+char *create_xarr(int size)
 {
 	char *array;
 	int index;
@@ -52,13 +52,13 @@ char *create_xarray(int size)
 }
 
 /**
- * iterate_zeroes - Iterates through a string of numbers containing
+ * it_zeroes - Iterates through a string of numbers containing
  *                  leading zeroes until it hits a non-zero number.
  * @str: The string of numbers to be iterate through.
  *
  * Return: A pointer to the next non-zero element.
  */
-char *iterate_zeroes(char *str)
+char *it_zeroes(char *str)
 {
 	while (*str && *str == '0')
 		str++;
@@ -101,7 +101,7 @@ void get_prod(char *prod, char *mult, int digit, int zeroes)
 {
 	int mult_len, num, tens = 0;
 
-	mult_len = find_len(mult) - 1;
+	mult_len = calc_len(mult) - 1;
 	mult += mult_len;
 
 	while (*prod)
@@ -199,20 +199,20 @@ int main(int argc, char *argv[])
 	}
 
 	if (*(argv[1]) == '0')
-		argv[1] = iterate_zeroes(argv[1]);
+		argv[1] = it_zeroes(argv[1]);
 	if (*(argv[2]) == '0')
-		argv[2] = iterate_zeroes(argv[2]);
+		argv[2] = it_zeroes(argv[2]);
 	if (*(argv[1]) == '\0' || *(argv[2]) == '\0')
 	{
 		printf("0\n");
 		return (0);
 	}
 
-	size = find_len(argv[1]) + find_len(argv[2]);
-	final_prod = create_xarray(size + 1);
-	next_prod = create_xarray(size + 1);
+	size = calc_len(argv[1]) + calc_len(argv[2]);
+	final_prod = create_xarr(size + 1);
+	next_prod = create_xarr(size + 1);
 
-	for (index = find_len(argv[2]) - 1; index >= 0; index--)
+	for (index = calc_len(argv[2]) - 1; index >= 0; index--)
 	{
 		digit = get_digit(*(argv[2] + index));
 		get_prod(next_prod, argv[1], digit, zeroes++);

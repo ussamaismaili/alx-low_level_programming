@@ -2,45 +2,31 @@
 #include<stdlib.h>
 #include<string.h>
 /**
- * add_node - add the new node at the very beginning
- * @head: the head of the list.
- * @str: the string data of the list we want to add .
- * Return: the address of the new element, otherwise NULL if fails .
+ * add_node - function stock in a array of struct
+ *
+ * @head: array of struct
+ * @str: element of struct
+ *
+ * Return: structur
  */
-
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new;
+	list_t *nodes;
 
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	if (!str)
+		return (NULL);
+	nodes = malloc(sizeof(list_t));
+	if (!nodes)
+		return (NULL);
+	nodes->str = strdup(str);
+	if (nodes->str == NULL)
 	{
+		free(nodes);
 		return (NULL);
 	}
-	new->str = strdup(str);
-	if (new->str == NULL)
-	{
-		free(newEl);
-		return (NULL);
-	}
-	new->len = _strlen(str);
-	new->next = *head;
-	*head = new;
-	return (*head);
-}
+	nodes->len = strlen(str);
+	nodes->next = *head;
+	*head = nodes;
 
-/**
- * _strlen - It calculate the length of a const char string.
- * @s: the string we want
- * Return: the length of string.
- */
-
-int _strlen(const char *s)
-{
-	unsigned int i;
-
-	for (i = 0; s[i] != '\0'; i++)
-	{
-	}
-	return (i);
+	return (nodes);
 }

@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * append_text_to_file - A function that creates a file and append text.
  * @filename:	The type char filename pointer of FD.

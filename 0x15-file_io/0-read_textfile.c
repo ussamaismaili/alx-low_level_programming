@@ -1,6 +1,7 @@
 #include "main.h"
 /**
- * read_textfile - fucntion that reads a text file and prints it to on standard output.
+ * read_textfile - fucntion that reads a text file
+ * and prints it to on standard output.
  * @filename: the type char filename.
  * @letters: the type size_t letters.
  * Return: 0 always..

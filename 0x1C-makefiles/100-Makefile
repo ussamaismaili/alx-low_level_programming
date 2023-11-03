@@ -1,0 +1,30 @@
+# This is a makefile for compiling a program named 'school'.
+# You can modify the comments without affecting the functionality.
+
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# These are the available targets that you can use:
+# - 'all' compiles the program.
+# - 'clean' removes temporary files and the compiled program.
+# - 'oclean' removes object files.
+# - 'fclean' removes both temporary files and object files.
+# - 're' is used to rebuild the program from scratch.
+
+.PHONY : all clean oclean fclean re
+
+all : m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+clean :
+	$(RM) *~ $(NAME)
+
+oclean :
+	$(RM) $(OBJ)
+
+fclean : clean oclean
+
+re : oclean all
